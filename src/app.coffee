@@ -2,6 +2,7 @@ express = require 'express'
 session = require 'express-session'
 cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
+mongoose = require 'mongoose'
 
 #### Basic application initialization
 # Create app instance.
@@ -11,9 +12,8 @@ app = express()
 app.port = process.env.PORT or process.env.VMC_APP_PORT or 3000
 env = process.env.NODE_ENV or "development"
 
-# Config module exports has `setEnvironment` function that sets app settings depending on environment.
-config = require "./config"
-config.setEnvironment env
+mongoose.connect 'mongodb://localhost/example'
+app.locals.db = mongoose
 
 # Set the public folder as static assets.
 app.use express.static(process.cwd() + '/public')
@@ -29,6 +29,7 @@ app.use session(
 app.use bodyParser()
 
 routes = require './routes'
-routes(app)
+routes app
+
 
 app.listen()

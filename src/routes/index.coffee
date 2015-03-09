@@ -1,5 +1,8 @@
-# Routing module
+datalayer = require '../dl'
 module.exports = (app) ->
+  # Create data layer
+  dl = datalayer app
+
   app.get '/', (req, res) ->
     res.end ""
 
@@ -30,4 +33,10 @@ module.exports = (app) ->
 
   # Get ICal
   app.get '/share/:cal_ident.ics', (req, res) ->
+    raw = req.params.cal_ident.replace(/_/g, '/') + "==";
+    data = (new Buffer raw, 'base64').toString()
+    if ":" in data
+      ident = data.split ":"
+    else
+      res.json error: true
     res.end ""

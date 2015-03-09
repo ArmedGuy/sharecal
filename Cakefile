@@ -173,8 +173,6 @@ build = (watch, callback, {useMapping} = {}) ->
   options.unshift '-w' if watch
   launch 'coffee', options, callback
 
-  launch 'coffee', ['package.cson', 'package.json', '-c', '-b'], (-> log '.)')
-
 # ## *unlinkIfCoffeeFile*
 #
 # **given** string as file
