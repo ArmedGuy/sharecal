@@ -9,6 +9,9 @@
       "email": "johan@re3.io"
     }
   ],
+  "scripts": {
+    "test": "set DEBUG=express:* && cake build && node lib/app.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ArmedGuy/sharecal.git"
