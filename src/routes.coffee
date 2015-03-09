@@ -3,25 +3,29 @@ module.exports = (app) ->
   app.get '/', (req, res) ->
     res.end ""
 
-  # Login user or org
+  # Login user
   app.post '/login', (req, res) ->
     res.end ""
 
-  # Register new user or org
+  # Register new user
   app.post '/register', (req, res) ->
     res.end ""
 
-  # Get calendar
-  app.get '/calendar/:id', (req, res) ->
+  # Get user data
+  app.get '/user', (req, res) ->
     res.end ""
 
-  app.post '/calendar/add', (req,res) ->
+  # Update user settings
+  app.post '/user/settings', (req, res) ->
     res.end ""
 
-  app.post '/calendar/remove/:id', (req, res) ->
+  # Subscribe to user calendar
+  app.post '/user/subscribe', (req, res) ->
     res.end ""
 
-
+  # Unsubscribe from calendar
+  app.post '/user/unsubscribe', (req, res) ->
+    res.end ""
 
 
   # Get ICal
