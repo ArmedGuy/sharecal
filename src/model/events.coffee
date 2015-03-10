@@ -3,7 +3,7 @@ module.exports = (app) ->
   ObjectId = Schema.ObjectId
 
   Event = new Schema
-    user: type: ObjectId, ref: 'users'
+    _user: type: ObjectId, ref: 'User'
     title: String
     location: String
     description: String
