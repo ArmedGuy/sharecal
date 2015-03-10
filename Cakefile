@@ -57,6 +57,19 @@ task 'docs', 'generate documentation', -> docco()
 task 'build', 'compile source', (options) ->
   build false, (-> log ":-)", green), useMapping: useMapping = options.map
 
+# ## *build-client*
+#
+# Builds Client Source
+#
+# <small>Usage</small>
+#
+# ```
+# cake build-client
+# ```
+task 'build-client', 'compile client source', (options) ->
+  buildClient (-> log ";-)", green)
+
+
 # ## *watch*
 #
 # Builds your source whenever it changes
@@ -172,6 +185,23 @@ build = (watch, callback, {useMapping} = {}) ->
   options = options.concat files
   options.unshift '-w' if watch
   launch 'coffee', options, callback
+
+buildClient = (callback) ->
+  options = ['-c']
+  options.push "-o"
+  options.push "public\\js"
+  options.push "src\\client"
+  launch 'coffee', options, ->
+    fs.unlinkSync "public/js/app.js"
+    walk 'public/js', (err, results) ->
+      log ':(', red if err
+      for file in results
+        if file.match /\.js$/
+          fs.appendFileSync "public/js/app.js", fs.readFileSync file
+          fs.unlink file, ->
+          log "Building #{file} to app.js", green
+
+      callback()
 
 # ## *unlinkIfCoffeeFile*
 #
