@@ -5,9 +5,6 @@ module.exports = (app) ->
   User = app.locals.model.users
   # Public endpoints
 
-  app.get '/', (req, res) ->
-    res.end ""
-
   # return session
   app.get '/session', (req, res) ->
     res.json loggedIn: req.session.loggedIn? and req.session.loggedIn

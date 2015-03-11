@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well">
+        <form class="form-horizontal" ng-submit="login()">
+          <fieldset>
+            <legend>Logga In</legend>
+            <div class="alert alert-dismissible alert-success" ng-if="loggedIn">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>Inloggning lyckades!</strong> Du har nu blivit inloggad.
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-2 control-label">E-post</label>
+              <div class="col-lg-10">
+                <input ng-model="email" class="form-control" id="inputEmail" placeholder="E-post" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-2 control-label">Lösenord</label>
+              <div class="col-lg-10">
+                <input ng-model="password" class="form-control" id="inputPassword" placeholder="Lösenord" type="password">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">Logga In</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Fördelen med ett konto</h4>
+      <p>
+        Genom att ha ett konto på ShareCal kan du:
+        <ul>
+          <li>Lätt prenumerera på nya kalendrar och få deras event synkroniserade till din kalender direkt</li>
+          <li>Få tillgång till privata event</li>
+        </ul>
+    </div>
+  </div>
+</div>

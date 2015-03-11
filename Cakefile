@@ -192,7 +192,10 @@ buildClient = (callback) ->
   options.push "public\\js"
   options.push "src\\client"
   launch 'coffee', options, ->
-    fs.unlinkSync "public/js/app.js"
+    try
+      fs.unlinkSync "public/js/app.js"
+    catch error
+      log 'Nothing to clean up', green
     walk 'public/js', (err, results) ->
       log ':(', red if err
       for file in results

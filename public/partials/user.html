@@ -1,0 +1,92 @@
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          {{user.name}}
+        </a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <p class="navbar-text navbar-right">{{user.subscribers}} prenumeranter</p>
+        <button type="button" class="btn btn-primary navbar-btn">Prenumerera</button>
+      </div>
+    </div>
+  </nav>
+  <h2>Planerade event</h2>
+  <h4 class="text-right">
+    <span class="label label-primary">Event</span>
+    <span class="label label-danger">Möte</span>
+    <span class="label label-warning">Viktigt datum</span>
+    <span class="label label-default">Annat</span>
+  </h4>
+  <hr/>
+  <!-- This week -->
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">I veckan</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+    </div>
+    <!-- events -->
+    <div class="col-md-3" ng-repeat="event in events">
+      <div class="panel" ng-class="{'panel-primary': event.type=='event', 'panel-danger': event.type=='meeting'}">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{event.date}} {{event.title}}</h3>
+        </div>
+        <div class="panel-body">
+          {{event.text}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- This month -->
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Den här månaden</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+    </div>
+    <!-- events -->
+    <div class="col-md-3" ng-repeat="event in events">
+      <div class="panel" ng-class="{'panel-primary': event.type=='event', 'panel-danger': event.type=='meeting'}">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{event.date}} {{event.title}}</h3>
+        </div>
+        <div class="panel-body">
+          {{event.text}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Next month -->
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Nästa månad</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+    </div>
+    <!-- events -->
+    <div class="col-md-3" ng-repeat="event in events">
+      <div class="panel" ng-class="{'panel-primary': event.type=='event', 'panel-danger': event.type=='meeting'}">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{event.date}} {{event.title}}</h3>
+        </div>
+        <div class="panel-body">
+          {{event.text}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

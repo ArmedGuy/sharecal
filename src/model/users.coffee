@@ -8,7 +8,7 @@ module.exports = (app) ->
     email: type: String, unique: true
     password: String
     token: String
-    _subscribers: [ type: ObjectId, ref: 'Subscription' ]
+    description: String
     registeredDate: Date
 
   app.locals.db.model "User", User

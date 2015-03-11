@@ -9,5 +9,6 @@ module.exports = (app) ->
     description: String
     startDate: Date
     endDate: Date
+    level: Number
 
   app.locals.db.model "Event", Event
