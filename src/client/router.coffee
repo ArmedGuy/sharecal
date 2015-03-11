@@ -8,6 +8,9 @@ app.config ($routeProvider) ->
     .when '/login',
       templateUrl: 'partials/login.html'
       controller: 'LoginController'
+    .when '/register',
+      templateUrl: 'partials/register.html'
+      controller: 'RegisterController'
     .when '/user/:ident',
       templateUrl: 'partials/user.html'
       controller: 'UserController'
