@@ -6,10 +6,10 @@
  - Small, easy UX with few options.
  - Scalable syncing options.
  - Minimal administration.
-
  - Effective and easily deployable stack.
 
-PS. For the sake of this design document, the words user, calendar, and subscriber will be exchanged quite frequently.
+##### Notes
+For the sake of this design document, the words user, calendar, and subscriber will be exchanged quite frequently.
 
 By design, a calendar is equal to a user, but with the intent to distribute event to subscribers. (IE a user account is the calendar)
 

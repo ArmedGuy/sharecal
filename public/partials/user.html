@@ -7,8 +7,9 @@
         </a>
       </div>
       <div class="collapse navbar-collapse">
-        <p class="navbar-text navbar-right">{{user.subscribers}} prenumeranter</p>
-        <button type="button" class="btn btn-primary navbar-btn">Prenumerera</button>
+        <p class="navbar-text navbar-right">{{user._subscribers.length}} prenumeranter</p>
+        <button ng-if="!subscribed() && loggedIn" ng-click="subscribe()" type="button" class="btn btn-primary navbar-btn">Prenumerera</button>
+        <button ng-if="subscribed() && loggedIn" ng-click="unsubscribe()" type="button" class="btn btn-danger navbar-btn">Avbryt Prenumeration</button>
       </div>
     </div>
   </nav>

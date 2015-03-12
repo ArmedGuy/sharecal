@@ -3,6 +3,14 @@ module.exports = (app) ->
 
   # Models
   User = app.locals.model.users
+  # Update user info on every request
+  app.use (req, res, next) ->
+    if req.session.loggedIn and req.session.userId?
+      User.findOne _id: req.session.userId, (err, user) ->
+        req.session.user = user if not err? and user?
+        next()
+    else
+      next()
   # Public endpoints
 
   # return session
@@ -19,7 +27,6 @@ module.exports = (app) ->
       User.findOne
         email: email
         password: password,
-        '_id name ident email token registeredDate',
         (err, user) ->
           if err or not user
             res.json error: true, message: "Failed to log in, please try again"
@@ -50,20 +57,9 @@ module.exports = (app) ->
     else
       res.json error: true, message: "Missing information to register"
 
-  # Update user info on every request
-  app.use (req, res, next) ->
-    if req.session.loggedIn and req.session.userId?
-      User.findOne _id: req.session.userId, '_id name ident email token registeredDate', (err, user) ->
-        req.session.user = user if not err? and user?
-        next()
-    else
-      next()
   # Everything below this is private
   app.use (req, res, next) ->
-    if req.session.loggedIn and req.session.userId?
-      User.findOne _id: req.session.userId, (err, user) ->
-        req.session.user = user if not err? and user?
-
+    return next() if req.method == 'GET' # allow all get requests for now
     if req.session.loggedIn then next() else res.json error: true, message: "Not logged in"
 
   user(app)

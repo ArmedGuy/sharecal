@@ -9,6 +9,12 @@ module.exports = (app) ->
     password: type: String, match: /.{3,}/
     token: String
     description: String
+    _subscribers: [{type: ObjectId, ref: 'User'}]
     registeredDate: Date
+
+  User.methods.toJSON = ->
+    obj = @.toObject()
+    delete obj.password
+    obj
 
   app.locals.db.model "User", User

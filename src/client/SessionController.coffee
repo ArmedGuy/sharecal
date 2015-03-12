@@ -1,7 +1,7 @@
 app = angular.module "ShareCal"
 app.controller "SessionController", ($scope, $http, $timeout, $location, Notify) ->
   $scope.loggedIn = false
-  $scope.user = null
+  $scope.currentUser = null
   $scope.$on "loggedIn", ->
     checkSession()
 
@@ -12,7 +12,7 @@ app.controller "SessionController", ($scope, $http, $timeout, $location, Notify)
       if $scope.loggedIn
         $http.get '/user'
         .success (userData) ->
-          $scope.user = userData
+          $scope.currentUser = userData
       $timeout checkSession, 10000
     .error (data, status) ->
       $scope.loggedIn = false
@@ -23,5 +23,5 @@ app.controller "SessionController", ($scope, $http, $timeout, $location, Notify)
     .success (data) ->
       Notify.ok "Loggade ut!", "Du har nu blivit utloggad"
       $scope.loggedIn = false
-      $scope.user = null
+      $scope.currentUser = null
       $location.path "/"
