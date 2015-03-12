@@ -25,7 +25,7 @@ module.exports = (app) ->
             res.json error: true, message: "Failed to log in, please try again"
           else
             req.session.loggedIn = true
-            req.session.user = user
+            req.session.userId = user._id
             res.json loggedIn: true
 
   # Log user out
@@ -42,14 +42,27 @@ module.exports = (app) ->
       u = new User req.body
       u.save (err) ->
         if err
-          res.json error: true, message: "Could not register, please check your info"
+          res.json error: true, message: err.message
         else
+          req.session.loggedIn = true
+          req.session.userId = u._id
           res.json registered: true
     else
       res.json error: true, message: "Missing information to register"
 
   # Everything below this is private
   app.use (req, res, next) ->
+    if req.session.loggedIn and req.session.userId?
+      User.findOne _id: req.session.userId, '_id name ident email token registeredDate', (err, user) ->
+        req.session.user = user if not err? and user?
+        next()
+    else
+      next()
+  app.use (req, res, next) ->
+    if req.session.loggedIn and req.session.userId?
+      User.findOne _id: req.session.userId, (err, user) ->
+        req.session.user = user if not err? and user?
+
     if req.session.loggedIn then next() else res.json error: true, message: "Not logged in"
 
   user(app)
