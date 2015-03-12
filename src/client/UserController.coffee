@@ -1,5 +1,5 @@
 app = angular.module "ShareCal"
-app.controller "UserController", ($scope, $http, $routeParams, Notify) ->
+app.controller "UserController", ($scope, $http, $timeout, $routeParams, Notify) ->
   ident = $routeParams.ident
 
   fetch = ->
@@ -11,8 +11,7 @@ app.controller "UserController", ($scope, $http, $routeParams, Notify) ->
 
   $scope.subscribed = ->
     return false if not $scope.user?
-    console.log $scope.user._subscribers.indexOf ($scope.currentUser._id)
-    return false if not ($scope.loggedIn? or $scope.loggedIn)
+    return false if not ($scope.loggedIn? or $scope.loggedIn or $scope.currentUser?)
     return ($scope.user._subscribers.indexOf ($scope.currentUser._id)) > -1
 
   $scope.subscribe = ->
@@ -22,7 +21,7 @@ app.controller "UserController", ($scope, $http, $routeParams, Notify) ->
         Notify.ok "Prenumeration lyckades!", "Du har prenumererat på #{$scope.user.name}"
       else
         Notify.e data
-      fetch()
+      $timeout fetch, 500
     .error (data) ->
       Notify.error "Nope", "Något gick fel"
 
@@ -33,6 +32,6 @@ app.controller "UserController", ($scope, $http, $routeParams, Notify) ->
         Notify.ok "Avprenumeration lyckades!", "Du prenumererar inte längre på #{$scope.user.name}"
       else
         Notify.e data
-      fetch()
+      $timeout fetch, 500
     .error (data) ->
       Notify.error "Nope", "Något gick fel"

@@ -1,5 +1,5 @@
 app = angular.module "ShareCal"
-app.controller "SessionController", ($scope, $http, $timeout, $location, Notify) ->
+app.controller "SessionController", ($scope, $http, $timeout, $location, $modal, Notify) ->
   $scope.loggedIn = false
   $scope.currentUser = null
   $scope.$on "loggedIn", ->
@@ -25,3 +25,13 @@ app.controller "SessionController", ($scope, $http, $timeout, $location, Notify)
       $scope.loggedIn = false
       $scope.currentUser = null
       $location.path "/"
+
+  $scope.newEvent = ->
+    inst = $modal.open
+      templateUrl: 'partials/event_new.html'
+      controller: 'NewEventController'
+      backdrop: 'static'
+      keyboard: true
+
+    inst.result.then (res) ->
+      

@@ -1,0 +1,57 @@
+<form role="form" ng-submit="create()">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Nytt event</h2>
+        <div class="form-group">
+            <label for="InputTitle">Namn</label>
+            <div class="input-group">
+                <input ng-model="name" type="text" class="form-control" name="InputTitle" id="InputTitle" placeholder="Namn" required>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="InputDescription">Beskrivning</label>
+          <textarea class="form-control" ng-model="description" name="InputDescription" id="InputDescription" placeholder="Beskrivning" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="InputLocation">Plats</label>
+          <input class="form-control" ng-model="location" name="InputLocation" id="InputLocation" placeholder="Plats"/>
+        </div>
+        <div class="form-group">
+          <label for="InputDate">Datum</label>
+          <p class="input-group">
+            <input class="form-control" ng-model="date" name="InputDate" id="InputDate" placeholder="2015-12-31" required
+            datepicker-popup="{{format}}" min-date="today" is-open="opened" ng-required="true" ng-click="openDate($event)"
+            close-text="Stäng" today-text="Idag" clear-text="Rensa" datepicker-options="dateOptions" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="openDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="InputStartTime">Starttid</label>
+          <timepicker ng-model="startTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="false"></timepicker>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="InputEndTime">Sluttid</label>
+          <timepicker ng-model="endTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="false"></timepicker>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="InputLevel">Synlighetsnivå</label>
+          <input type="number" class="form-control" ng-model="level" name="InputLevel" id="InputLevel" placeholder="Synlighetsnivå" value="0"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer cf">
+    <button type="button" class="btn btn-warning pull-right" ng-click="cancel()">Avbryt</button>
+    <button type="submit" class="btn btn-info">Skapa nytt event</button>
+  </div>
+</form>
