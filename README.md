@@ -18,12 +18,12 @@ A subscriber is also equal to a user, but with the intent to consume events.
 A personal calendar corresponds to the subscriber's personal calendar system that events are synced to. (Not to be confused with a 'calendar')
 
 
-### For users
+### For subscribers
 
-Users will be given two options:
- - Sync public events from individual calendars, without having to create your own user account. The problem with this is that you will have to subscribe to each link per user manually.
+Subscribers will be given two options:
+ - Sync public events from individual calendars, without having to create your own user account. The problem with this is that you will have to subscribe to each link per calendar manually.
 
- - Sync all events you are privileged to, and subscribe to new calendars via the web-app. This is the preferred option as you only need to subscribe to your personal link, and it will be updated automatically.
+ - Sync all events you are privileged to, and subscribe to new calendars via the web-app. This is the preferred option as you only need to subscribe (via your personal calendar) to your personal link, and it will be updated automatically.
 
 
 ### For calendars (which is any user, really)
