@@ -50,7 +50,7 @@ module.exports = (app) ->
     else
       res.json error: true, message: "Missing information to register"
 
-  # Everything below this is private
+  # Update user info on every request
   app.use (req, res, next) ->
     if req.session.loggedIn and req.session.userId?
       User.findOne _id: req.session.userId, '_id name ident email token registeredDate', (err, user) ->
@@ -58,6 +58,7 @@ module.exports = (app) ->
         next()
     else
       next()
+  # Everything below this is private
   app.use (req, res, next) ->
     if req.session.loggedIn and req.session.userId?
       User.findOne _id: req.session.userId, (err, user) ->
