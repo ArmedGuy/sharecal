@@ -35,5 +35,4 @@ app.use bodyParser.json()
 routes = require './routes'
 routes app
 
-
 app.listen(app.port)
