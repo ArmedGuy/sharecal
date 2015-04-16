@@ -1,4 +1,5 @@
 user = require './user'
+event = require './event'
 module.exports = (app) ->
 
   # Models
@@ -62,7 +63,9 @@ module.exports = (app) ->
     return next() if req.method == 'GET' # allow all get requests for now
     if req.session.loggedIn then next() else res.json error: true, message: "Not logged in"
 
-  user(app)
+  # Router files
+  user app
+  event app
 
   # Get ICal
   app.get '/share/:cal_ident.ics', (req, res) ->

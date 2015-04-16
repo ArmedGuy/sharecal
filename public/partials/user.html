@@ -32,88 +32,14 @@
         </div>
       </div>
     </div>
-    <!-- dummy event -->
-    <div class="col-md-3">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">12/03 - Lunchmöte med Arctic Group och Twerk Academy</h3>
-        </div>
-        <div class="panel-body">
-          Var: C305<br/>
-          När: 12:00 - 13:00<br/>
-          <br/>
-          Arctic Group och Twerk Academy kommer att föreläsa för oss angående baguetter, och hur man bokar in sig på så många lunchmöten som möjligt för att leva ekonomiskt.
-        </div>
-      </div>
-    </div>
     <!-- events -->
     <div class="col-md-3" ng-repeat="event in events">
       <div class="panel" ng-class="{'panel-primary': event.type=='event', 'panel-danger': event.type=='meeting'}">
         <div class="panel-heading">
-          <h3 class="panel-title">{{event.date}} {{event.title}}</h3>
+          <h3 class="panel-title">{{event.date}} | {{event.title}}</h3>
         </div>
         <div class="panel-body">
-          {{event.text}}
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- This month -->
-  <div class="row">
-    <div class="col-md-3">
-      <div class="panel">
-        <div class="panel-heading">
-          <h3 class="panel-title">Den här månaden</h3>
-        </div>
-        <div class="panel-body">
-        </div>
-      </div>
-    </div>
-    <!-- events -->
-    <div class="col-md-3" ng-repeat="event in events">
-      <div class="panel" ng-class="{'panel-primary': event.type=='event', 'panel-danger': event.type=='meeting'}">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{event.date}} {{event.title}}</h3>
-        </div>
-        <div class="panel-body">
-          {{event.text}}
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Next month -->
-  <div class="row">
-    <div class="col-md-3">
-      <div class="panel">
-        <div class="panel-heading">
-          <h3 class="panel-title">Nästa månad</h3>
-        </div>
-        <div class="panel-body">
-        </div>
-      </div>
-    </div>
-    <!-- dummy event -->
-    <div class="col-md-3">
-      <div class="panel panel-danger">
-        <div class="panel-heading">
-          <h3 class="panel-title">23/04 - Sektionsmöte</h3>
-        </div>
-        <div class="panel-body">
-          Var: Deltasalen<br/>
-          När: 18:00 - 25/04<br/>
-          <br/>
-          Yolo swaggins alltså
-        </div>
-      </div>
-    </div>
-    <!-- events -->
-    <div class="col-md-3" ng-repeat="event in events">
-      <div class="panel" ng-class="{'panel-primary': event.type=='event', 'panel-danger': event.type=='meeting'}">
-        <div class="panel-heading">
-          <h3 class="panel-title">{{event.date}} {{event.title}}</h3>
-        </div>
-        <div class="panel-body">
-          {{event.text}}
+          {{event.description}}
         </div>
       </div>
     </div>

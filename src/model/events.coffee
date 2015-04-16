@@ -6,10 +6,10 @@ module.exports = (app) ->
     _owner: type: ObjectId, ref: 'User'
     type: String
     title: type: String, match: /.{4,256}/
-    location: String, match: /.{2,128}/
+    location: type: String, match: /.{2,128}/
     description: String
     startDate: Date,
     endDate: Date
-    level: Number, min: 1, max: 100
+    level: type: Number, min: 0, max: 100
 
   app.locals.db.model "Event", Event

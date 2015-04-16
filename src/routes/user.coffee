@@ -40,7 +40,7 @@ module.exports = (app) ->
         res.json error: true, message: "User #{req.params.ident} not found"
       else
         Event.find _owner: user._id
-        .exec(err, events) ->
+        .exec (err, events) ->
           if not err?
             res.json events
           else

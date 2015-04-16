@@ -7,6 +7,7 @@ module.exports = (app) ->
   app.post '/event', (req, res) ->
     if req.body?
       e = new Event req.body
+      e._owner = req.session.user._id
       e.save (err) ->
         if err
           res.json error: true, message: err.message

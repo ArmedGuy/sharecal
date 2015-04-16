@@ -1,7 +1,7 @@
 app = angular.module "ShareCal"
 app.controller "UserController", ($scope, $http, $timeout, $routeParams, Notify) ->
   ident = $routeParams.ident
-
+  months = [ "Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]
   fetch = ->
     $http.get "/user/#{ident}"
     .success (data) ->
@@ -9,10 +9,23 @@ app.controller "UserController", ($scope, $http, $timeout, $routeParams, Notify)
       $scope.user = data
   fetch()
 
+  fetchEvents = ->
+    $http.get "/user/#{ident}/events"
+    .success (data) ->
+      return false if data.error?
+      for e in data
+        do (e) ->
+          e.startDate = new Date e.startDate
+          e.endDate = new Date e.endDate
+          e.date = e.startDate.getDay() + " " + months[e.startDate.getMonth()]
+      $scope.events = data
+  fetchEvents()
+
+
   $scope.subscribed = ->
     return false if not $scope.user?
     return false if not ($scope.loggedIn? or $scope.loggedIn or $scope.currentUser?)
-    return ($scope.user._subscribers.indexOf ($scope.currentUser._id)) > -1
+    return ($scope.user._subscribers.indexOf ($scope.currentUser?._id)) > -1
 
   $scope.subscribe = ->
     $http.post "/user/#{ident}/subscribe"
