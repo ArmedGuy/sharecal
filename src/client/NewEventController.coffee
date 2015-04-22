@@ -14,7 +14,7 @@ app.controller "NewEventController", ($scope, $modalInstance, $http, Notify) ->
 
   $scope.ok = ->
     if (not $scope.startTime? or not $scope.endTime?) or $scope.startTime > $scope.endTime
-      Notify.error "Fel tid", "Tiden för eventet är ej giltigt."
+      return Notify.error "Fel tid", "Tiden för eventet är ej giltigt."
 
     startDate = new Date $scope.date.getTime()
     startDate.setHours $scope.startTime.getHours()
@@ -26,6 +26,7 @@ app.controller "NewEventController", ($scope, $modalInstance, $http, Notify) ->
 
     event =
       title: $scope.title
+      type: $scope.type
       description: $scope.description
       location: $scope.location
       startDate: startDate

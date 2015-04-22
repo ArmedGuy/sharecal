@@ -11,6 +11,13 @@
             </div>
         </div>
         <div class="form-group">
+          <label for="InputType">Typ</label>
+            <option value="event">Event</option>
+            <option value="meeting">Möte</option>
+            <option value="reminder">Påminnelse</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="InputDescription">Beskrivning</label>
           <textarea class="form-control" ng-model="description" name="InputDescription" id="InputDescription" placeholder="Beskrivning" required></textarea>
         </div>
