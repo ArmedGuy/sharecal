@@ -8,6 +8,7 @@ app.controller "SessionController", ($scope, $http, $timeout, $location, $modal,
   checkSession = ->
     $http.get '/session'
     .success (data) ->
+      $scope.loaded = true
       $scope.loggedIn = data.loggedIn
       if $scope.loggedIn
         $http.get '/user'
