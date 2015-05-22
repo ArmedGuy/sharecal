@@ -3,13 +3,13 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">
-          {{user.name}}
+          {{user.name}} <i class="glyphicon glyphicon-ok-sign"></i>
         </a>
       </div>
       <div class="collapse navbar-collapse">
         <p class="navbar-text navbar-right">{{user._subscribers.length}} prenumeranter</p>
-        <button ng-if="!subscribed() && loggedIn" ng-click="subscribe()" type="button" class="btn btn-success navbar-btn">Prenumerera</button>
-        <button ng-if="subscribed() && loggedIn" ng-click="unsubscribe()" type="button" class="btn btn-danger navbar-btn">Avbryt Prenumeration</button>
+        <button ng-if="!subscribed() && loggedIn && !isCurrentUser(user)" ng-click="subscribe()" type="button" class="btn btn-success navbar-btn">Prenumerera</button>
+        <button ng-if="subscribed() && loggedIn && !isCurrentUser(user)" ng-click="unsubscribe()" type="button" class="btn btn-danger navbar-btn">Avbryt Prenumeration</button>
       </div>
     </div>
   </nav>
@@ -36,7 +36,7 @@
     <div class="col-md-3" ng-repeat="event in events">
       <div class="panel" ng-class="{'panel-primary': event.type=='event', 'panel-danger': event.type=='meeting'}">
         <div class="panel-heading">
-          <h3 class="panel-title">{{event.date}} | {{event.title}}</h3>
+          <h3 class="panel-title">{{event.date}} | {{event.title}} <p ng-if="isCurrentUser(user)" class="pull-right">x</p></h3>
         </div>
         <div class="panel-body">
           {{event.description}}

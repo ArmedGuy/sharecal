@@ -17,7 +17,10 @@ app.controller "UserController", ($scope, $http, $timeout, $routeParams, Notify)
         do (e) ->
           e.startDate = new Date e.startDate
           e.endDate = new Date e.endDate
-          e.date = e.startDate.getDay() + " " + months[e.startDate.getMonth()]
+          console.log e.startDate.toString()
+          day = e.startDate.getDate()
+          end = if 0 < (if day < 9 then day else day % 10) < 3 then ":a" else ":e"
+          e.date = day + end + " " + months[e.startDate.getMonth()]
       $scope.events = data
   fetchEvents()
 

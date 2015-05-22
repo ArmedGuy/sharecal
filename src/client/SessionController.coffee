@@ -18,6 +18,10 @@ app.controller "SessionController", ($scope, $http, $timeout, $location, $modal,
       $scope.loggedIn = false
   checkSession()
 
+  $scope.isCurrentUser = (user) ->
+    return false if not user? or not $scope.currentUser?
+    return user._id == $scope.currentUser._id
+
   $scope.logout = ->
     $http.post '/logout'
     .success (data) ->
@@ -34,4 +38,3 @@ app.controller "SessionController", ($scope, $http, $timeout, $location, $modal,
       keyboard: true
 
     inst.result.then (res) ->
-      

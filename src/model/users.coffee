@@ -9,6 +9,7 @@ module.exports = (app) ->
     password: type: String, match: /.{3,}/
     token: String
     description: String
+    verified: Number
     _subscribers: [{type: ObjectId, ref: 'User'}]
     registeredDate: Date
 
