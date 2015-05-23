@@ -5,6 +5,8 @@ body {
 .user-header {
   background-color: #222222;
   height: 300px;
+  background-size: cover;
+  background-position: center;
 }
 .user-header .navbar {
   color: white;

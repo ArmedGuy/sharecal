@@ -2,6 +2,10 @@ app = angular.module "ShareCal"
 app.controller "SessionController", ($scope, $http, $timeout, $location, $modal, Notify) ->
   $scope.loggedIn = false
   $scope.currentUser = null
+  $scope.bgs = {}
+  $http.get '/verified.json'
+  .success (data) ->
+    $scope.bgs = data
   $scope.$on "loggedIn", ->
     checkSession()
 
