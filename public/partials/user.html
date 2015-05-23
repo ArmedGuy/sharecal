@@ -1,9 +1,9 @@
-<div class="user-header" style="background-image: url({{bgs[user.ident]}})">
+<div class="user-header" style="background-image: url({{verified[user.ident].bg}})">
   <div class="container">
     <div class="user-header-name">
-      <h2>{{user.name}} <i ng-if="user.verified" class="glyphicon glyphicon-ok-sign"></i></h2>
+      <h2 style="background-color: {{verified[user.ident].clr}}">{{user.name}} <i ng-if="user.verified" class="glyphicon glyphicon-ok-sign"></i></h2>
     </div>
-    <nav class="navbar">
+    <nav class="navbar" style="background-color: {{verified[user.ident].clr}}">
       <div class="container-fluid">
         <div class="collapse navbar-collapse">
           <p class="navbar-text navbar-right">{{user._subscribers.length}} prenumeranter</p>

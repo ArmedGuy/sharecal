@@ -1,4 +1,10 @@
 {
-  "TKL": "http://teknologkaren.se/wp-content/uploads/2014/07/Banner-hemsidan21.png",
-  "DDOS": "https://scontent-ams3-1.xx.fbcdn.net/hphotos-xfa1/t31.0-8/s2048x2048/11101012_936676639696569_5681234069806664459_o.png"
+  "TKL": {
+    "clr": "#9E1B32",
+    "bg": "http://teknologkaren.se/wp-content/uploads/2014/07/Banner-hemsidan21.png"
+  },
+  "DDOS": {
+    "clr": "black",
+    "bg": "https://scontent-ams3-1.xx.fbcdn.net/hphotos-xfa1/t31.0-8/s2048x2048/11101012_936676639696569_5681234069806664459_o.png"
+  }
 }
