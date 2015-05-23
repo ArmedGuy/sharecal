@@ -10,10 +10,14 @@ body {
 }
 .user-header .navbar {
   color: white;
+  background-color: #222222;
 }
 .user-header-name {
-  margin: 105px 20px;
+  margin: 80px 20px;
 }
 .user-header-name h2 {
   color: white;
+  background-color: #222222;
+  padding: 5px;
+  display: inline-block;
 }
