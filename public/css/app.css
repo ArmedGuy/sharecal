@@ -1,0 +1,17 @@
+body {
+  background-color: #EEEEEE;
+}
+
+.user-header {
+  background-color: #222222;
+  height: 300px;
+}
+.user-header .navbar {
+  color: white;
+}
+.user-header-name {
+  margin: 105px 20px;
+}
+.user-header-name h2 {
+  color: white;
+}

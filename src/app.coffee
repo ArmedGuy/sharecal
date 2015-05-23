@@ -35,4 +35,8 @@ app.use bodyParser.json()
 routes = require './routes'
 routes app
 
+app.all '/*', (req, res, next) ->
+  res.sendFile 'index.html',
+    root: process.cwd() + '/public'
+
 app.listen(app.port)

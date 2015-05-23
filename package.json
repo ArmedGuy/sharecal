@@ -24,6 +24,7 @@
     "express-session": "^1.10.3",
     "icalendar": "^0.7.1",
     "mongoose": "^3.8.24",
+    "rand-token": "^0.2.1",
     "which": "^1.0.9"
   }
 }

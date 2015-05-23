@@ -1,3 +1,4 @@
+token = require 'rand-token'
 user = require './user'
 event = require './event'
 module.exports = (app) ->
@@ -48,6 +49,7 @@ module.exports = (app) ->
   app.post '/register', (req, res) ->
     if req.body?
       u = new User req.body
+      u.token = token.generate(16)
       u.save (err) ->
         if err
           res.json error: true, message: err.message

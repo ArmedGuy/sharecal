@@ -15,7 +15,7 @@ module.exports = (app) ->
         else
           res.json created: true
 
-  app.get '/events/feed/:ident.ics', (req, res) -> # public feed of user
+  app.get '/events/:ident.ics', (req, res) -> # public feed of user
     User.findOne
       ident: req.params.ident
       (err, user) ->
@@ -30,6 +30,25 @@ module.exports = (app) ->
           cal = new ical(events)
           res.end cal.export()
 
-  app.get '/events/:ident_str', (req, res) ->
-    id = new Buffer(req.params.ident_str.replace(/_/g, '/').replace(/\-/g, '+'), 'base64')
+  app.get '/events/feed/:access.ics', (req, res) -> # no habla los dos, does not account for level yet
+    id = new Buffer(req.params.access.replace(/_/g, '/').replace(/\-/g, '+'), 'base64').toString()
     parts = id.split(":")
+    User.findOne
+      ident: parts[0]
+      token: parts[1],
+      (err, user) ->
+        if not user? or err?
+          return res.end "Hopefully this triggers an invalid calendar format on your end! ;) This user doesn't exist!"
+        User.find
+          _subscribers: user._id, "_id"
+          (err, users) ->
+            ids = (u._id for u in users)
+            ids.push user._id
+            Event.find
+              _owner:
+                $in: ids
+            .sort "startDate"
+            .populate '_owner'
+            .exec (err, events) ->
+              cal = new ical(events)
+              res.end cal.export()

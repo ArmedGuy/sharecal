@@ -31,6 +31,8 @@ app.controller "SessionController", ($scope, $http, $timeout, $location, $modal,
       $scope.currentUser = null
       $location.path "/"
 
+  $scope.getSubscribeLink = ->
+    prompt("Länk", "http://localhost:3000/events/feed/" + $scope.currentUser.access + ".ics")
   $scope.newEvent = ->
     inst = $modal.open
       templateUrl: 'partials/event_new.html'

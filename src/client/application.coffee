@@ -1,4 +1,5 @@
 app = angular.module 'ShareCal', ['ngRoute', 'ui.bootstrap']
 
-app.controller 'MainController', ($scope) ->
-  $scope.hi = "test"
+app.config ($locationProvider) ->
+  $locationProvider.html5Mode true
+  $locationProvider.hashPrefix '!'

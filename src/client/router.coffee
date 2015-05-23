@@ -11,7 +11,7 @@ app.config ($routeProvider) ->
     .when '/register',
       templateUrl: 'partials/register.html'
       controller: 'RegisterController'
-    .when '/user/:ident',
+    .when '/u/:ident',
       templateUrl: 'partials/user.html'
       controller: 'UserController'
     .otherwise

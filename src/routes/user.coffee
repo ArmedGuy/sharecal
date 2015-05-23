@@ -17,6 +17,7 @@ module.exports = (app) ->
       else
         userObj = user.toJSON()
         delete userObj.email # strip email from public users
+        delete userObj.access # strip access token
         res.json userObj
 
   app.get '/user/:ident/subscribers', (req, res) ->

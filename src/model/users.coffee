@@ -15,7 +15,12 @@ module.exports = (app) ->
 
   User.methods.toJSON = ->
     obj = @.toObject()
+    obj.access = @.getToken()
     delete obj.password
     obj
+
+  User.methods.getToken = ->
+    new Buffer("#{@.ident}:#{@.token}").toString('base64')
+      .replace(/\//g, '_').replace(/\+/g, '-')
 
   app.locals.db.model "User", User
